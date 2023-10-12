@@ -275,7 +275,7 @@ augment-torch-113: build-gpt-neox-deepspeed-gpu
 augment-torch-201: build-gpt-neox-deepspeed-gpu-torch-201
 
 .PHONY: augment-torch-210
-augment-torch-21: build-gpt-neox-deepspeed-gpu-torch-210
+augment-torch-210: build-gpt-neox-deepspeed-gpu-torch-210
 
 # This builds deepspeed environment off of a patched version of EleutherAI's fork of DeepSpeed
 # that we need for gpt-neox support.
