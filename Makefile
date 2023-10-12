@@ -239,9 +239,10 @@ DEEPSPEED_VERSION := 0.7.0
 export GPU_DEEPSPEED_ENVIRONMENT_NAME := $(CUDA_117_PREFIX)pytorch-1.13-tf-2.8-deepspeed-$(DEEPSPEED_VERSION)$(GPU_SUFFIX)
 export GPU_GPT_NEOX_DEEPSPEED_ENVIRONMENT_NAME := $(CUDA_117_PREFIX)$(PY_39_TAG)pytorch-1.13-gpt-neox-deepspeed$(GPU_SUFFIX)
 export GPU_GPT_NEOX_DEEPSPEED_ENVIRONMENT_NAME_201 := $(CUDA_118_PREFIX)$(PY_39_TAG)pytorch-2.0.1-gpt-neox-deepspeed$(GPU_SUFFIX)
+export GPU_GPT_NEOX_DEEPSPEED_ENVIRONMENT_NAME_210 := $(CUDA_121_PREFIX)$(PY_39_TAG)pytorch-2.1.0-gpt-neox-deepspeed$(GPU_SUFFIX)
 export TORCH_PIP_DEEPSPEED_GPU := torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1+cu117 -f https://download.pytorch.org/whl/cu117/torch_stable.html
 export TORCH_PIP_DEEPSPEED_GPU_201 := torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2+cu118 -f https://download.pytorch.org/whl/cu118/torch_stable.html
-export TORCH_PIP_DEEPSPEED_GPU_210 := torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2+cu118 -f https://download.pytorch.org/whl/cu118/torch_stable.html
+export TORCH_PIP_DEEPSPEED_GPU_210 := torch==2.1.0+cu121 torchvision==0.16.0+cu121 torchaudio==2.1.0+cu121 -f https://download.pytorch.org/whl/cu121/torch_stable.html
 export TORCH_TB_PROFILER_PIP := torch-tb-profiler==0.4.1
 
 # This builds deepspeed environment off of upstream microsoft/DeepSpeed.
@@ -330,8 +331,8 @@ build-gpt-neox-deepspeed-gpu-torch-210: build-gpu-cuda-121-base
 		--build-arg APEX_GIT="https://github.com/NVIDIA/apex.git" \
 		--build-arg DET_BUILD_NCCL="" \
 		--build-arg DEEPSPEED_PIP="git+https://github.com/augmentcode/DeeperSpeed.git@ea3711b1d6b2134d8ad1be26854ff0d9f60c383f" \
-		-t $(DOCKERHUB_REGISTRY)/$(GPU_GPT_NEOX_DEEPSPEED_ENVIRONMENT_NAME_21)-$(SHORT_GIT_HASH) \
-		-t $(DOCKERHUB_REGISTRY)/$(GPU_GPT_NEOX_DEEPSPEED_ENVIRONMENT_NAME_21)-$(VERSION) \
+		-t $(DOCKERHUB_REGISTRY)/$(GPU_GPT_NEOX_DEEPSPEED_ENVIRONMENT_NAME_210)-$(SHORT_GIT_HASH) \
+		-t $(DOCKERHUB_REGISTRY)/$(GPU_GPT_NEOX_DEEPSPEED_ENVIRONMENT_NAME_210)-$(VERSION) \
 		-o type=image,push=false \
 		.
 
